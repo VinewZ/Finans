@@ -1,4 +1,5 @@
 import { Header } from '@/components/Header'
+import { NumPad } from '@/components/NumPad'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
       <ThemeSwitcher />
       <Header />
+      <NumPad />
     </main>
   )
 }
