@@ -6,7 +6,7 @@ export function TransactionValueInput() {
   const [inputValue, setInputValue] = useState<undefined | number>()
 
   return (
-    <div className="mt-8 flex items-center justify-end border-b text-3xl font-bold">
+    <div className="mt-8 flex items-center justify-end border-b border-white/20 text-3xl font-bold">
       <span className="text-white">$</span>
       <Input
         className="border-none text-3xl placeholder:text-white/20"
