@@ -1,5 +1,5 @@
 'use client'
-import { transactionValueAtom } from '@/app/atoms/TransactionValue'
+import { transactionValueAtom } from '@/atoms/TransactionValue'
 import { Input } from '@/components/_shadcn/ui/input'
 import { useAtom } from 'jotai'
 import { useEffect, useState } from 'react'

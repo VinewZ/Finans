@@ -2,7 +2,7 @@
 import { Check, Delete } from 'lucide-react'
 import { Button } from '../_shadcn/ui/button'
 import { useAtom } from 'jotai'
-import { transactionValueAtom } from '@/app/atoms/TransactionValue'
+import { transactionValueAtom } from '@/atoms/TransactionValue'
 
 export function NumPad() {
   const [transactionValue, setTransactionValue] = useAtom(transactionValueAtom)
