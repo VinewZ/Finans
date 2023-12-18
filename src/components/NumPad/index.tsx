@@ -10,8 +10,8 @@ export function NumPad() {
   function handleTransactionChange(value: string) {
     switch (value) {
       case 'delete':
-        String(transactionValue).length > 0 &&
-          setTransactionValue(String(transactionValue).slice(0, -1))
+        transactionValue.length > 0 &&
+          setTransactionValue(transactionValue.slice(0, -1))
         break
 
       case 'sum':
@@ -24,9 +24,10 @@ export function NumPad() {
         break
 
       default:
-        transactionValue === undefined
+        if (transactionValue.split(',')[1]?.length === 2) return
+        transactionValue === ''
           ? setTransactionValue(value)
-          : setTransactionValue(String(transactionValue) + value)
+          : setTransactionValue(transactionValue + value)
         break
     }
   }
