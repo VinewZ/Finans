@@ -1,41 +1,45 @@
 'use client'
+import { transactionValueAtom } from '@/app/atoms/TransactionValue'
 import { Input } from '@/components/_shadcn/ui/input'
-import { ChangeEvent, useState } from 'react'
+import { useAtom } from 'jotai'
+import { useEffect, useState } from 'react'
 
 export function TransactionValueInput() {
-  const [inputValue, setInputValue] = useState<undefined | number>()
+  const [transactionValue] = useAtom(transactionValueAtom)
   const [inputWidth, setInputWidth] = useState('1ch')
 
-  function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
-    const value =
-      e.target.value.trim() !== '' ? Number(e.target.value) : undefined
-    const width =
-      value?.toString() === undefined
-        ? '1ch'
-        : value.toString().length + 1 + 'ch'
+  function handleInputChange() {
+    const value = transactionValue || ''
+    const width = value.length + 'ch' || '1ch'
 
-    setInputValue(value)
-    setInputWidth(width)
+    if (value.length > 0) {
+      setInputWidth(width)
+    }
   }
+
+  useEffect(() => {
+    handleInputChange()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [transactionValue])
 
   return (
     <div className="mt-8 flex items-center justify-end border-b border-white/20 pr-2 text-3xl font-bold">
       <span
         className={`${
-          inputValue?.toString() !== undefined &&
-          inputValue?.toString().length > 0
-            ? 'text-white'
-            : 'text-white/20'
+          transactionValue.length > 0
+            ? '-mr-1 text-white'
+            : 'mr-0 text-white/20'
         } pr-2`}
       >
         $
       </span>
       <Input
-        className="max-w-[90%] border-none p-0 text-right text-3xl placeholder:text-white/20"
+        className={`
+          ${transactionValue.length > 0 ? 'text-white' : 'text-white/20'}
+          max-w-[90%] border-none p-0 text-right text-3xl disabled:opacity-100`}
         placeholder="0"
-        type="number"
-        value={inputValue}
-        onChange={(e) => handleInputChange(e)}
+        type="text"
+        value={transactionValue}
         style={{ width: inputWidth }}
         disabled
       />
