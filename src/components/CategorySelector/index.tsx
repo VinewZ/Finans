@@ -12,7 +12,7 @@ export function CategorySelector() {
     <div className="my-4 space-y-2 text-center">
       <span className="text-xs">Categories</span>
       <ScrollArea className="mx-auto whitespace-nowrap rounded-md px-2">
-        <div className="flex w-max space-x-4">
+        <div className="mx-auto flex w-max space-x-4">
           {categories.map((category) => (
             <figure
               key={category.name}
